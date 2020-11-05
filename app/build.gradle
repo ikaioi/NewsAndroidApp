@@ -67,4 +67,10 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestCompile 'com.squareup.retrofit2:retrofit-mock:2.9.0'
+    androidTestCompile ('com.squareup.okhttp:mockwebserver:2.7.0')
+    androidTestCompile 'com.android.support.test:runner:1.0.2'
+    androidTestCompile 'com.android.support.test:rules:1.0.2'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.2.0'
 }

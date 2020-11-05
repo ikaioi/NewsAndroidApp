@@ -12,6 +12,9 @@
     <string name="login_with_credentials">Log in using your biometric credential</string>
     <string name="password">Use account password</string>
 
+    <string name="no_results">There aren\'t headlines available. Please try again later</string>
+    <string name="error_connection">It was not possible to get the content. Please verify your internet connection and try it again</string>
+
 
 
 

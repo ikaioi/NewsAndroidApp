@@ -1,9 +1,11 @@
 package com.example.news.ui.main;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.news.MainActivity;
 import com.example.news.R;
@@ -60,22 +63,27 @@ public class MainFragment extends Fragment {
         viewModel.getNewsRepository().observe(getViewLifecycleOwner(), newsResponse -> {
 
 
+            mBinding.progressBar.setVisibility(View.GONE);
+
             if(newsResponse != null) {
                 newsResponse.getStatus();
                 List<NewsArticle> newsArticles = newsResponse.getArticles();
 
 
-                mBinding.progressBar.setVisibility(View.GONE);
                 if (newsArticles != null) {
                     mMainAdapter.setHeadlinesList(newsArticles);
                 } else {
                     // nao ha headlines - tente novamente
+                    Toast.makeText(getContext(), getString(R.string.no_results), Toast.LENGTH_LONG).show();
                 }
 
-                
+
                 mBinding.executePendingBindings();
 
                 mMainAdapter.notifyDataSetChanged();
+
+            } else {
+                Toast.makeText(getContext(), getString(R.string.error_connection), Toast.LENGTH_LONG).show();
             }
         });
 
